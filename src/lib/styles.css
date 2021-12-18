@@ -1,0 +1,12 @@
+@media print {
+  body > * {
+    display: none;
+  }
+  body > .alx-printable {
+    display: flex !important;
+    flex-direction: column;
+  }
+}
+.alx-printable {
+  display: none;
+}
