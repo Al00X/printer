@@ -3,8 +3,7 @@
     display: none;
   }
   body > .alx-printable {
-    display: flex !important;
-    flex-direction: column;
+    display: block !important;
   }
 }
 .alx-printable {
