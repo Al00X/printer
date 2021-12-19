@@ -14,10 +14,12 @@
     "url": "git+https://github.com/Al00X/printer"
   },
   "homepage": "https://github.com/Al00X/printer#readme",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "ng": "ng",
-    "build": "ng build",
+    "build": "run-s ng:build script:static-copy",
+    "ng:build": "ng build",
+    "script:static-copy": "ts-node scripts/copy-static-files.ts",
     "test": "ng test"
   },
   "private": false,
