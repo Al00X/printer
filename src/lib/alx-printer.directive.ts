@@ -1,4 +1,4 @@
-import { Directive, NgModule } from '@angular/core';
+import {Directive, ElementRef, Input, NgModule, OnInit} from '@angular/core';
 
 const CLASS_NAME = 'alx-printable'
 
@@ -6,8 +6,23 @@ const CLASS_NAME = 'alx-printable'
   selector: '[alxPrint]',
   exportAs: 'alxPrint'
 })
-export class AlxPrintDirective {
-  print(elementToPrint: HTMLElement) {
+export class AlxPrintDirective implements OnInit {
+  @Input() hidden = false;
+
+  hostElement: HTMLElement;
+
+  constructor(private host: ElementRef<HTMLElement>) {
+    this.hostElement = this.host.nativeElement;
+  }
+
+  ngOnInit() {
+    if (this.hidden) {
+      this.hostElement.style.display = 'none';
+    }
+  }
+
+  print(element?: HTMLElement) {
+    const elementToPrint = element ?? this.hostElement;
     const printContent = elementToPrint.innerHTML;
     const printableDiv = document.createElement('div');
     printableDiv.className = elementToPrint.className;

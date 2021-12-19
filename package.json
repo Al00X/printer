@@ -14,11 +14,11 @@
     "url": "git+https://github.com/Al00X/printer"
   },
   "homepage": "https://github.com/Al00X/printer#readme",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "scripts": {
     "ng": "ng",
-    "build": "run-s ng:build script:static-copy",
-    "ng:build": "ng build",
+    "build": "npm run ng:build && npm run script:static-copy",
+    "ng:build": "ng build --configuration=production",
     "script:static-copy": "ts-node scripts/copy-static-files.ts",
     "test": "ng test"
   },
@@ -31,6 +31,8 @@
     "@angular/compiler": "~13.1.0",
     "@angular/core": "~13.1.0",
     "@angular-devkit/build-angular": "~13.1.2",
+    "@angular/platform-browser": "~13.1.0",
+    "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/cli": "~13.1.2",
     "@angular/compiler-cli": "~13.1.0",
     "@types/jasmine": "~3.10.0",
