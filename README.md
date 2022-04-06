@@ -1,7 +1,7 @@
 
 
 # @Al00X/Printer
-_Quickly print anything, anywhere, anytime!_
+> _Quickly print anything, anywhere, anytime!_ with Angular.
 
 
 ## Setup:
