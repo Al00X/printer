@@ -1,10 +1,10 @@
 
 
 # @Al00X/Printer
-> _Quickly print anything, anywhere, anytime!_ with Angular.
+> 🖨️ _Quickly print anything, anywhere, anytime!_ with Angular.
 
 
-## Setup:
+## ✅ Setup:
 Install using your prefered package manager:
 
     npm i @al00x/printer
@@ -17,7 +17,7 @@ Add the line below to your global styles inside the `angular.json`:
 	],
 ```
 
-## Usage:
+## ✨ Usage:
 You can simply throw `alxPrinter` directive on any html block and print!
 
 ```html
@@ -29,7 +29,7 @@ You can simply throw `alxPrinter` directive on any html block and print!
 ```
 You can also pass a HTMLElement to `print()` manually.
 
-### Directive Inputs:
+### ⚙️ Directive Inputs:
 | property | usage |
 |--|--|
 | `hidden: boolean`  | When set to true, the element itself gets hidden but visible to the print |
