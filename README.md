@@ -30,9 +30,9 @@ You can simply throw `alxPrinter` directive on any html block and print!
 You can also pass a HTMLElement to `print()` manually.
 
 ### ⚙️ Directive Inputs:
-| property                 | usage | default |
-|--------------------------|--|-------|
-| `hidden: boolean`        | When set to true, the element itself gets hidden but visible to the print | false |
-| `printFn: void function` | If you need a different printing function, provide its function here. | () => window.print() |
+| property                 | usage                                                                      | default |
+|--------------------------|----------------------------------------------------------------------------|-------|
+| `hidden: boolean`        | When set to true, the element itself gets hidden but visible to the print. | false |
+| `printFn: void function` | If you need a different printing function, provide its function here.      | () => window.print() |
 
 
