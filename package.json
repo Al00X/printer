@@ -14,7 +14,7 @@
     "url": "git+https://github.com/Al00X/printer"
   },
   "homepage": "https://github.com/Al00X/printer#readme",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "scripts": {
     "ng": "ng",
     "build": "npm run ng:build && npm run script:static-copy",
