@@ -25,7 +25,9 @@ export class AlxPrintDirective implements OnInit {
     }
   }
 
-  print(element?: HTMLElement) {
+  print(element?: HTMLElement, options?: {
+    printFn?: () => void;
+  }) {
     const elementToPrint = element ?? this.hostElement;
     const printContent = elementToPrint.innerHTML;
     const printableDiv = document.createElement('div');
@@ -33,7 +35,9 @@ export class AlxPrintDirective implements OnInit {
     printableDiv.classList.add(CLASS_NAME);
     printableDiv.innerHTML = printContent;
     document.body.appendChild(printableDiv);
-    if (this.printFn) {
+    if (options?.printFn) {
+      options?.printFn();
+    } else if (this.printFn) {
       this.printFn();
     } else {
       window.print();
