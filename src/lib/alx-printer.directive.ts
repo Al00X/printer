@@ -15,6 +15,8 @@ export class AlxPrintDirective implements OnInit {
 
   hostElement: HTMLElement;
 
+  private _printableDiv?: HTMLDivElement;
+
   constructor(private host: ElementRef<HTMLElement>) {
     this.hostElement = this.host.nativeElement;
   }
@@ -28,13 +30,7 @@ export class AlxPrintDirective implements OnInit {
   async print(element?: HTMLElement, options?: {
     printFn?: () => (void | Promise<void>);
   }) {
-    const elementToPrint = element ?? this.hostElement;
-    const printContent = elementToPrint.innerHTML;
-    const printableDiv = document.createElement('div');
-    printableDiv.className = elementToPrint.className;
-    printableDiv.classList.add(CLASS_NAME);
-    printableDiv.innerHTML = printContent;
-    document.body.appendChild(printableDiv);
+    this.prepare(element);
     if (options?.printFn) {
       const res = options?.printFn();
       if (res instanceof Promise) {
@@ -45,8 +41,23 @@ export class AlxPrintDirective implements OnInit {
     } else {
       window.print();
     }
-    document.body.removeChild(printableDiv);
-    printableDiv.remove();
+    this.cleanup();
+  }
+
+  prepare(element?: HTMLElement) {
+    const elementToPrint = element ?? this.hostElement;
+    const printContent = elementToPrint.innerHTML;
+    this._printableDiv = document.createElement('div');
+    this._printableDiv.className = elementToPrint.className;
+    this._printableDiv.classList.add(CLASS_NAME);
+    this._printableDiv.innerHTML = printContent;
+    document.body.appendChild(this._printableDiv);
+  }
+  cleanup() {
+    if (!this._printableDiv) return;
+    document.body.removeChild(this._printableDiv);
+    this._printableDiv.remove();
+    this._printableDiv = undefined;
   }
 }
 
