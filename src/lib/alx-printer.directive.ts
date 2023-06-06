@@ -7,7 +7,11 @@ const CLASS_NAME = 'alx-printable'
   exportAs: 'alxPrint'
 })
 export class AlxPrintDirective implements OnInit {
+  // When set to true, the element itself gets hidden but visible to the print
   @Input() hidden = false;
+  // If you need a different printing function, provide its function here.
+  // Default is window.print();
+  @Input() printFn?: () => void;
 
   hostElement: HTMLElement;
 
@@ -29,7 +33,11 @@ export class AlxPrintDirective implements OnInit {
     printableDiv.classList.add(CLASS_NAME);
     printableDiv.innerHTML = printContent;
     document.body.appendChild(printableDiv);
-    window.print();
+    if (this.printFn) {
+      this.printFn();
+    } else {
+      window.print();
+    }
     document.body.removeChild(printableDiv);
     printableDiv.remove();
   }

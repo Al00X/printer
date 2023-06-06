@@ -1,10 +1,13 @@
-<div style="width: 100vw;; background: gray; padding: 5rem">
+<div class="btn-wrapper">
   <button (click)="printer.print()">Export ?</button>
+  <button (click)="printer2.print()">Custom Function!</button>
 </div>
 
-
-
-<div class="print-element" #printer="alxPrint" [hidden]="true" alxPrint>
+<div alxPrint #printer="alxPrint" [hidden]="true" class="print-element">
   <p>{{ title }}</p>
   <p>Im going to be printed!</p>
+</div>
+
+<div alxPrint #printer2="alxPrint" [hidden]="true" [printFn]="customPrintFn" class="print-element">
+  <p>{{ title }}</p>
 </div>
