@@ -31,7 +31,6 @@ export class AlxPrintDirective implements OnInit, OnDestroy {
 
     if (window.matchMedia) {
       this._onMediaQueryChange = (e: MediaQueryListEvent) => {
-        console.log(e);
         if (!e.matches) {
           this.cleanup();
         }
